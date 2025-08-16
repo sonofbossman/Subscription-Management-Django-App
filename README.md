@@ -40,7 +40,7 @@ subscription-management-django-app/
 │   ├── views.py              # API views
 │   ├── serializers.py        # DRF serializers
 │   ├── urls.py               # API routes
-│── users/                    # app for authentication
+│── account/                    # app for authentication
     ├── models.py             # Custom user model
     ├── views.py
     ├── serializers.py
