@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class CustomUser(AbstractUser):
-  email = models.EmailField(required=True, unique=True)
+  email = models.EmailField(unique=True)
 
   def __str__(self):
     return super().__str__()
