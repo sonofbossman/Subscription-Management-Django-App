@@ -33,7 +33,10 @@ subscription-management-django-app/
 │── manage.py
 │── requirements.txt
 │── README.md
-│── .env.example
+│── .env
+│── .gitignore
+│── media
+│   ├── profiles              # storage location for user profile photo
 │── subscription_app/         # main project settings
 │── subscriptions/            # app for subscription features
 │   ├── models.py             # Subscription model
@@ -45,6 +48,10 @@ subscription-management-django-app/
     ├── views.py
     ├── serializers.py
     ├── urls.py
+    ├── signals.py
+    ├── admin.py
+    ├── apps.py
+
 ```
 
 ---
@@ -106,16 +113,19 @@ python manage.py runserver
 
 ## 🔑 API Endpoints
 
-| Endpoint                   | Method | Description                     |
-| -------------------------- | ------ | ------------------------------- |
-| `/api/register/`           | POST   | Register a new user             |
-| `/api/login/`              | POST   | User login (JWT)                |
-| `/api/subscriptions/`      | GET    | List all user subscriptions     |
-| `/api/subscriptions/`      | POST   | Create a new subscription       |
-| `/api/subscriptions/<id>/` | GET    | Retrieve subscription details   |
-| `/api/subscriptions/<id>/` | PUT    | Update a subscription           |
-| `/api/subscriptions/<id>/` | DELETE | Delete a subscription           |
-| `/api/dashboard/`          | GET    | Subscription summary & insights |
+| Endpoint                   | Method | Description                        |
+| -------------------------- | ------ | ---------------------------------- |
+| `/api/register/`           | POST   | Register a new user                |
+| `/api/login/`              | POST   | User login (Token)                 |
+| `/api/logout/`             | POST   | User logout (IsAuthenticated)      |
+| `/api/profile/`            | GET    | View own profile (IsAuthenticated) |
+| `/api/profile/`            | PATCH  | Edit own profile (IsAuthenticated) |
+| `/api/subscriptions/`      | GET    | List all user subscriptions        |
+| `/api/subscriptions/`      | POST   | Create a new subscription          |
+| `/api/subscriptions/<id>/` | GET    | Retrieve subscription details      |
+| `/api/subscriptions/<id>/` | PUT    | Update a subscription              |
+| `/api/subscriptions/<id>/` | DELETE | Delete a subscription              |
+| `/api/dashboard/`          | GET    | Subscription summary & insights    |
 
 ---
 
