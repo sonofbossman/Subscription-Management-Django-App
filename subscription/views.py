@@ -5,11 +5,17 @@ from subscription.serializers import (
   SubscriptionSerializer, TagSerializer, 
   StatusSerializer, CurrencySerializer
   )
+from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
 class SubscriptionViewSet(viewsets.ModelViewSet):
   queryset = Subscription.objects.all()
   serializer_class = SubscriptionSerializer
+  permission_classes = [IsAuthenticated]
+
+
+  def perform_create(self, serializer):
+    serializer.save(user=self.request.user)
 
 class TagViewSet(viewsets.ModelViewSet):
   queryset = Tag.objects.all()
