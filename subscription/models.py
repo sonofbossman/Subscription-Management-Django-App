@@ -21,7 +21,7 @@ class Currency(models.Model):
     return self.code
 
 class Status(models.Model):
-  name = models.CharField(max_length=50, unique=True)
+  name = models.CharField(max_length=50, unique=True, default="Active")
   description = models.TextField(null=True, blank=True, max_length=255)
   date_created = models.DateTimeField(auto_now_add=True)
   date_updated = models.DateTimeField(auto_now=True)
