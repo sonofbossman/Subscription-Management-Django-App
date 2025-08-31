@@ -21,9 +21,8 @@ A backend application built with **Django REST Framework** that helps users mana
 
 - **Backend:** Django, Django REST Framework
 - **Auth:** Token Auth (`djangorestframework-authtoken`)
-- **Database:** MySQL (or SQLite for local dev)
-- **Docs:** drf-yasg / Swagger for API documentation
-- **Deployment:** Render / Railway / Heroku
+- **Database:** PostgreSQL (or SQLite for local dev)
+- **Deployment:** Render
 
 ---
 
@@ -145,18 +144,15 @@ python manage.py test
 
 Interactive API docs available at:
 
-- Swagger UI → `/swagger/`
-- ReDoc → `/redoc/`
+- browsable APi → `/https://sma-976s.onrender.com//`
 
 ---
 
 ## 🚀 Deployment
 
-The app can be deployed on:
+The app is deployed on:
 
 - **Render**
-- **Railway**
-- **Heroku**
 
 Make sure to:
 
