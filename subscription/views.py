@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from rest_framework import viewsets 
+from rest_framework import viewsets, filters
 from subscription.models import Subscription, Tag, Status, Currency
 from subscription.serializers import (
   SubscriptionSerializer, TagSerializer, 
@@ -7,13 +6,20 @@ from subscription.serializers import (
   )
 from rest_framework.permissions import IsAuthenticated
 from subscription.permissions import IsOwnerOrAdmin, IsAdminOrReadOnly
-from rest_framework.pagination import PageNumberPagination
+from django_filters.rest_framework import DjangoFilterBackend
+from subscription.filters import SubscriptionFilter
 # Create your views here.
 
 class SubscriptionViewSet(viewsets.ModelViewSet):
   queryset = Subscription.objects.all()
   serializer_class = SubscriptionSerializer
   permission_classes = [IsAuthenticated, IsOwnerOrAdmin]
+  filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+  # filterset_fields = ["user", "status", "recurring", "currency"]
+  search_fields = ["service_name", "user"]
+  ordering_fields = ["user", "billing_amount", "date_subscribed", "next_billing_date", "status"]
+  ordering = ["date_subscribed"]
+  filterset_class = SubscriptionFilter
 
   def get_queryset(self):
     user = self.request.user
