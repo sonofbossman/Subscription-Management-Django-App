@@ -118,6 +118,7 @@ python manage.py runserver
 
 | Endpoint                   | Method | Description                        |
 | -------------------------- | ------ | ---------------------------------- |
+| `/api/`                    | GET    | API Root                           |
 | `/api/auth/register/`      | POST   | Register a new user                |
 | `/api/auth/login/`         | POST   | User login (Token)                 |
 | `/api/auth/logout/`        | POST   | User logout (IsAuthenticated)      |
