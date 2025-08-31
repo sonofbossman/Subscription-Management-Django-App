@@ -135,7 +135,11 @@ REST_FRAMEWORK = {
     'django_filters.rest_framework.DjangoFilterBackend',
     'rest_framework.filters.SearchFilter',
     'rest_framework.filters.OrderingFilter'
-  ]
+  ],
+  "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+    ]
 }
 
 AUTH_USER_MODEL = "account.CustomUser"
