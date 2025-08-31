@@ -38,6 +38,11 @@ subscription-management-django-app/
 │── media
 │   ├── profiles              # storage location for user profile photo
 │── subscription_app/         # main project settings
+│   ├── exceptions.py         # custom exceptions
+│   ├── settings.py           # project settings
+│   ├── urls.py               # project root urls
+│   ├── asgi.py
+│   ├── wsgi.py     
 │── subscriptions/            # app for subscription features
 │   ├── models.py             # Subscription model
 │   ├── views.py              # API views
@@ -145,7 +150,7 @@ python manage.py test
 
 Interactive API docs available at:
 
-- browsable API → `/https://sma-976s.onrender.com/api//`
+- browsable API → `/https://sma-976s.onrender.com/api/`
 
 ---
 
