@@ -145,7 +145,7 @@ python manage.py test
 
 Interactive API docs available at:
 
-- browsable APi → `/https://sma-976s.onrender.com//`
+- browsable API → `/https://sma-976s.onrender.com/api//`
 
 ---
 
