@@ -9,17 +9,18 @@ A backend application built with **Django REST Framework** that helps users mana
 - **User Authentication** (Token-based)
 - **Subscription Management** (Add, Update, Delete, List)
 - **Billing Tracking** (Amount, Frequency, Due Dates)
-- **Categories** (Entertainment, Utilities, Productivity, etc.)
+- **Tags/Categories** (Entertainment, Utilities, Productivity, etc.)
 - **Dashboard** (Monthly/Yearly cost overview)
 - **Notifications** (Email reminders for upcoming billing)
 - **Search & Filter** subscriptions
+- **Pagination** subscriptions
 
 ---
 
 ## 🏗️ Tech Stack
 
 - **Backend:** Django, Django REST Framework
-- **Auth:** Token Auth (`djangorestframework-simplejwt`)
+- **Auth:** Token Auth (`djangorestframework-authtoken`)
 - **Database:** MySQL (or SQLite for local dev)
 - **Docs:** drf-yasg / Swagger for API documentation
 - **Deployment:** Render / Railway / Heroku
@@ -42,14 +43,17 @@ subscription-management-django-app/
 │   ├── models.py             # Subscription model
 │   ├── views.py              # API views
 │   ├── serializers.py        # DRF serializers
+|   ├── admin.py              # admin panel config
 │   ├── urls.py               # API routes
-│── account/                    # app for authentication
+|   ├── filters.py            # Custom filtering
+|   ├── permissions.py        # Custom permissions
+│── account/                  # app for authentication
     ├── models.py             # Custom user model
-    ├── views.py
-    ├── serializers.py
-    ├── urls.py
-    ├── signals.py
-    ├── admin.py
+    ├── views.py              # account API views
+    ├── serializers.py        # DRF serializers
+    ├── urls.py               # account routes
+    ├── signals.py            # signals for automatic token and profile creation
+    ├── admin.py              # admin panel config
     ├── apps.py
 
 ```
@@ -115,11 +119,11 @@ python manage.py runserver
 
 | Endpoint                   | Method | Description                        |
 | -------------------------- | ------ | ---------------------------------- |
-| `/api/register/`           | POST   | Register a new user                |
-| `/api/login/`              | POST   | User login (Token)                 |
-| `/api/logout/`             | POST   | User logout (IsAuthenticated)      |
-| `/api/profile/`            | GET    | View own profile (IsAuthenticated) |
-| `/api/profile/`            | PATCH  | Edit own profile (IsAuthenticated) |
+| `/api/auth/register/`      | POST   | Register a new user                |
+| `/api/auth/login/`         | POST   | User login (Token)                 |
+| `/api/auth/logout/`        | POST   | User logout (IsAuthenticated)      |
+| `/api/auth/profile/`       | GET    | View own profile (IsAuthenticated) |
+| `/api/auth/profile/`       | PATCH  | Edit own profile (IsAuthenticated) |
 | `/api/subscriptions/`      | GET    | List all user subscriptions        |
 | `/api/subscriptions/`      | POST   | Create a new subscription          |
 | `/api/subscriptions/<id>/` | GET    | Retrieve subscription details      |
