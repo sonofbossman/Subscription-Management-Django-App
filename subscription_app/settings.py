@@ -139,7 +139,8 @@ REST_FRAMEWORK = {
   "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
         "rest_framework.renderers.BrowsableAPIRenderer",
-    ]
+    ],
+  "EXCEPTION_HANDLER": "subscription_app.exceptions.custom_exception_handler"
 }
 
 AUTH_USER_MODEL = "account.CustomUser"
