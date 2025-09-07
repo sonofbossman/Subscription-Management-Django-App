@@ -136,11 +136,19 @@ REST_FRAMEWORK = {
     'rest_framework.filters.SearchFilter',
     'rest_framework.filters.OrderingFilter'
   ],
-  "DEFAULT_RENDERER_CLASSES": [
+  'DEFAULT_RENDERER_CLASSES': [
         "rest_framework.renderers.JSONRenderer",
         "rest_framework.renderers.BrowsableAPIRenderer",
     ],
-  "EXCEPTION_HANDLER": "subscription_app.exceptions.custom_exception_handler"
+  'EXCEPTION_HANDLER': 'subscription_app.exceptions.custom_exception_handler',
+  'DEFAULT_THROTTLE_CLASSES': [
+    'rest_framework.throttling.AnonRateThrottle',
+    'rest_framework.throttling.UserRateThrottle'
+  ],
+  'DEFAULT_THROTTLE_RATES': {
+    'anon': os.getenv('DEFAULT_ANON_THROTTLE_RATE', '10/day'),
+    'user': os.getenv('DEFAULT_USER_THROTTLE_RATE', '100/day')
+  }
 }
 
 AUTH_USER_MODEL = "account.CustomUser"
