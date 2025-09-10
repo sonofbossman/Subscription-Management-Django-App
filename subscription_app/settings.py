@@ -84,23 +84,23 @@ WSGI_APPLICATION = 'subscription_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default=os.environ.get("DATABASE_URL"),
-#         conn_max_age=600
-#     )
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '3306')
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get("DATABASE_URL"),
+        conn_max_age=600
+    )
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': os.getenv('DB_NAME'),
+#         'USER': os.getenv('DB_USER', 'root'),
+#         'PASSWORD': os.getenv('DB_PASSWORD'),
+#         'HOST': os.getenv('DB_HOST', 'localhost'),
+#         'PORT': os.getenv('DB_PORT', '3306')
+#     }
+# }
 
 
 # Password validation
@@ -130,15 +130,15 @@ REST_FRAMEWORK = {
     'rest_framework.permissions.AllowAny'
   ],
   'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-  'PAGE_SIZE': os.getenv('DEFAULT_PAGINATION_SIZE', 10),
+  'PAGE_SIZE': 10,
   'DEFAULT_FILTER_BACKENDS': [
     'django_filters.rest_framework.DjangoFilterBackend',
     'rest_framework.filters.SearchFilter',
     'rest_framework.filters.OrderingFilter'
   ],
   'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
     ],
   'EXCEPTION_HANDLER': 'subscription_app.exceptions.custom_exception_handler',
   'DEFAULT_THROTTLE_CLASSES': [
