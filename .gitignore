@@ -3,3 +3,7 @@ __pycache__
 migrations/
 .env
 media/
+.pytest_cache
+htmlcov
+.coverage
+staticfiles/
